@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bun Ratnatepy | Data Science Portfolio</title>
+  <meta name="description" content="Bun Ratnatepy's Data Science Portfolio - showcasing projects, experience, and skills in data science and machine learning." />
+  <meta name="author" content="Bun Ratnatepy" />
+  <link rel="icon" href="favicon.ico" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      padding-top: 70px;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #242b36;
+      font-size: 16px;
+    }
+    #mainNav { background: rgba(255,255,255,0.90); transition: box-shadow 0.4s;}
+    #mainNav.scrolled { box-shadow: 0 2px 15px rgba(56,70,99,0.05);}
+    .navbar-brand { font-weight: 700; font-size: 1.4rem; color: #30658a !important;}
+    .navbar-nav .nav-link {
+      color: #5f6d7e; font-weight: 500; border-radius: 18px; padding: 0.5rem 1.1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link:hover { background: #e5f2fa; color: #1b3a52; }
+    .hero {
+      min-height: 84vh;
+      display: flex; flex-direction: column; justify-content: center;
+      text-align: center;
+      background: linear-gradient(140deg, #f6fbfe 70%, #eaf5fb 100%);
+      color: #253746;
+      padding: 0 12px;
+    }
+    .hero h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: .01em; color: #253746;}
+    .hero .highlight { color: #5fc9e9; font-weight: 900;}
+    .hero p { font-size: 1.1rem; color: #5f6d7e;}
+    .btn-light {
+      background: #eaf6fb; color: #2e6e92; border: none;
+      border-radius: 25px; font-weight: 600; padding: 0.7rem 2rem;
+      box-shadow: 0 2px 8px rgba(95,205,230,0.05);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-light:hover, .btn-light:focus { background: #d3eefa; color: #28789b;}
+    .scroll-down span { display: block; width: 26px; height: 38px; border: 2px solid #c6dee8; border-radius: 22px; margin: 22px auto 0; position: relative;}
+    .scroll-down span::before { content: ''; position: absolute; top: 7px; left: 50%; width: 7px; height: 7px; background: #8fd3e5; border-radius: 50%; transform: translateX(-50%);}
+    .profile-card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 3px 16px rgba(60,80,130,0.05);
+      padding: 2.2rem 1.6rem 1.6rem 1.6rem;
+      max-width: 420px;
+      margin: 0 auto 2.6rem;
+      text-align: center;
+      border: 1px solid #e4ecf3;
+      position: relative;
+    }
+    .profile-img { width: 130px; height: 140px; border-radius: 16px; object-fit: cover; border: 2.5px solid #b9e4ef; margin-bottom: 1.1rem;}
+    .profile-card .open-badge {
+      background: linear-gradient(90deg, #8fd3e5, #bee6d7);
+      color: #30658a;
+      font-size: 0.95rem; padding: 0.37em 0.92em; border-radius: 11px;
+      font-weight: 600; position: absolute; top: 20px; right: 20px;
+      letter-spacing: 0.01em; box-shadow: 0 1.5px 7px rgba(87,205,230,0.08);
+      opacity: 0.93;
+    }
+    .profile-card h2 { color: #30658a; font-weight: 800; margin-bottom: 0.2rem; font-size: 1.36rem;}
+    .profile-card p.text-muted { color: #7a9caa; font-size: 1.02rem;}
+    .profile-card p { color: #466f85; font-size: 1.04rem;}
+    .social-links a { color: #5f6d7e; background: #eaf6fb; padding:6px 12px; margin-right: 9px; border-radius:50%; font-size:1.34rem; border:1.5px solid #e3eef4; transition: background 0.16s, color 0.16s;}
+    .social-links a:last-child { margin-right: 0;}
+    .social-links a:hover { color: #349cc8; background: #e0f1fa; }
+    .btn-outline-dark { border-radius: 25px; border: 1.5px solid #b7cad4; background: #fafdff; color: #38688e;}
+    .btn-outline-dark:hover { background: #e3eef4; color: #204058;}
+    section { padding-top: 3.3rem; padding-bottom: 3.3rem;}
+    h2.section-title { font-weight: 700; margin-bottom: 1.7rem; font-size: 2.15rem; color: #30658a; text-align: center;}
+    /* Timeline */
+    .timeline { border-left: 3px solid #bee6d7; padding-left: 22px; max-width: 700px; margin: 0 auto;}
+    .timeline-item { margin-bottom: 1.9rem; padding-left: 16px; border-left: 2px solid #e8f2f4; position: relative;}
+    .timeline-item h5 { color: #4da8bc; font-weight: 700; font-size: 1.05rem;}
+    .timeline-item p { color: #45617a; }
+    .timeline-item::before { content: ""; position: absolute; left: -16px; top: 9px; width: 10px; height: 10px; background-color: #8fd3e5; border-radius: 50%; border: 2.5px solid #fff;}
+    .card { border: none; border-radius: 15px; box-shadow: 0 2px 13px rgba(98,180,220,0.07); transition: transform 0.3s;}
+    .card:hover { transform: translateY(-6px);}
+    .card-title { font-size: 1.18rem; font-weight: 600; color: #37697d;}
+    .btn-primary { background-color: #bee6d7; border: none; color: #205f7b; }
+    .btn-primary:hover { background-color: #8fd3e5; color: #204058;}
+    /* Skills */
+    .badge { background: #e6f7fc; color: #1b3a52; font-size:1.01em; }
+    .progress { background: #edf6fa;}
+    .progress-bar { font-size: 0.93rem; }
+    /* Reference Card */
+    .reference-card { border-left:4px solid #bee6d7; background: #fafcff; }
+    .sticky-contact { position:fixed;bottom:18px;right:18px;z-index:999;padding:15px 16px 13px 16px;font-size:1.38rem;box-shadow:0 4px 17px rgba(110,183,206,0.13);}
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.58rem;}
+      .profile-card { max-width: 97%; padding: 1.4rem; }
+      .profile-img { width: 86px; height: 96px;}
+      h2.section-title { font-size: 1.37rem;}
+      ul { font-size: 0.98rem;}
+    }
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top border-bottom">
+  <div class="container">
+    <a class="navbar-brand" href="#home">Bun Ratnatepy</a>
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto fs-6">
+        <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#academic-journey">Academic Journey</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Hero -->
+<section class="hero" id="home" data-aos="fade-down">
+  <div class="container">
+    <h1>Hi, I'm <span class="highlight">Bun Ratnatepy</span></h1>
+    <p><span class="typed" data-typed-items="Data Science Student, Machine Learning Enthusiast, Problem Solver">Data Science Student</span></p>
+    <a href="#projects" class="btn btn-light mt-4">View My Work</a>
+    <div class="scroll-down mt-4"><span></span></div>
+  </div>
+</section>
+<!-- Profile (About Me) Section -->
+<section id="about" class="container py-5">
+  <div class="row justify-content-center align-items-center" data-aos="fade-up">
+    <div class="col-lg-7">
+      <div class="profile-card shadow">
+        <!-- <span class="open-badge">Open to Opportunities</span> -->
+        <img src="profile 1.jpg" alt="Bun Ratnatepy" class="profile-img" />
+        <h2>Bun Ratnatepy</h2>
+        <p class="text-muted mb-2">Fourth Year Data Science Student at ITC</p>
+        <hr style="width: 60px; border: 2px solid #00e3fc; border-radius: 2px; margin: 0.8rem auto 1rem auto;">
+        <p>
+          I’m a data science student at the Institute of Technology of Cambodia who values careful, ethical work, genuine curiosity, and helping teams learn together. I enjoy solving real-world problems with data, and have grown my skills through internships and hands-on projects.
+        </p>
+        <div class="d-flex justify-content-center align-items-center gap-3 mt-2 mb-2 social-links">
+          <a href="https://github.com/Ratnatepy" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/bun-ratnatepy-5859342b6/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="mailto:bunratnatepy@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+        </div>
+        <a href="Resume.pdf" class="btn btn-outline-dark btn-sm mt-3" download>
+          <i class="bi bi-download"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Academic Journey Timeline -->
+<section id="academic-journey" class="container py-5">
+  <h2 class="section-title">Academic Journey</h2>
+  <div class="timeline">
+    <div class="timeline-item" data-aos="fade-right">
+      <h5>2022 – Present</h5>
+      <p><strong>Bachelor of Engineering in Data Science</strong><br>
+      Department of Applied Mathematics and Statistics,<br>
+      Institute of Technology of Cambodia (ITC)</p>
+    </div>
+    <div class="timeline-item" data-aos="fade-right">
+      <h5>2022</h5>
+      <p>Completed <strong>Six Diploma-Level English Courses</strong><br>
+      Australia Centre for Education<br>
+      <span style="font-size:0.95em;">
+        Courses: Business Writing Skills, Academic Vocabulary, Creative Writing, Creative Thinking &amp; Problem-Solving Skills, Academic Reading &amp; Vocabulary 2, Academic Communication Skills
+      </span>
+      </p>
+    </div>
+    <div class="timeline-item" data-aos="fade-right">
+      <h5>2021</h5>
+      <p>Senior High School Certificate (<strong>Grade B, 98.41</strong>)<br>
+      Cambodia</p>
+    </div>
+    <div class="timeline-item" data-aos="fade-right">
+      <h5>2019</h5>
+      <p>General English Program<br>
+      Australia Centre for Education</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Skills Section -->
+<section id="skills" class="container py-5">
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="d-flex flex-wrap justify-content-center gap-2" style="max-width:480px;margin:auto;">
+    <span class="badge rounded-pill" style="background:#e6f7fc;color:#1b3a52;font-size:1.08em;">Python</span>
+    <span class="badge rounded-pill" style="background:#e9f9ef;color:#256c51;font-size:1.08em;">SQL</span>
+    <span class="badge rounded-pill" style="background:#eaf6fb;color:#246080;font-size:1.08em;">Power BI</span>
+    <span class="badge rounded-pill" style="background:#f2f6fd;color:#4067a3;font-size:1.08em;">Machine Learning</span>
+    <span class="badge rounded-pill" style="background:#f8f3fa;color:#7d529a;font-size:1.08em;">Statistical Analysis</span>
+    <span class="badge rounded-pill" style="background:#f7faf6;color:#748553;font-size:1.08em;">Data Visualization</span>
+    <span class="badge rounded-pill" style="background:#f9f6f6;color:#8e5454;font-size:1.08em;">Critical Thinking</span>
+    <span class="badge rounded-pill" style="background:#f8fbf5;color:#4f8957;font-size:1.08em;">Problem Solving</span>
+    <span class="badge rounded-pill" style="background:#f2f5fa;color:#577290;font-size:1.08em;">Teamwork</span>
+    <span class="badge rounded-pill" style="background:#fcf8f4;color:#9e8658;font-size:1.08em;">Communication</span>
+    <span class="badge rounded-pill" style="background:#f9f8f6;color:#8c728d;font-size:1.08em;">Creativity</span>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="container py-5">
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item" data-aos="fade-right">
+      <h5>24 July 2024 to 30 September 2024</h5>
+      <p><strong>Ministry of Post and Telecommunications</strong><br>
+      Designed and implemented an interactive dashboard for telecommunication indicators, supporting data-driven decisions.</p>
+    </div>
+  </div>
+</section>
+<!-- Projects -->
+<section id="projects" class="container py-5 bg-light">
+  <h2 class="section-title text-center">Academic Projects</h2>
+  <div class="row">
+    <!-- Project 1 -->
+    <div class="col-md-12 mb-4" data-aos="fade-up">
+      <div class="card h-100 p-4">
+        <h5 class="card-title">Linear Regression Model for Predicting Students' Performance</h5>
+        <p>
+          The developed linear regression model demonstrated promising performance on the testing set, highlighting its potential for accurately predicting students' performance based on various features.
+          This predictive system offers valuable insights for educational institutions seeking to optimize academic outcomes.
+        </p>
+        <a href="https://github.com/Ratnatepy/-Student-Performance-Score-" target="_blank" class="btn btn-primary">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+    <!-- Project 2 -->
+    <div class="col-md-12 mb-4" data-aos="fade-up">
+      <div class="card h-100 p-4">
+        <h5 class="card-title">Loan Default Risk Prediction Model</h5>
+        <p>
+          Designed to assess the likelihood that a borrower will default on a loan based on income, loan amount, credit score, interest rate, and DTIRatio, achieving an accuracy of 88.37%.
+        </p>
+        <a href="https://github.com/Ratnatepy/Loan-default-risk-prediction" target="_blank" class="btn btn-primary">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+    <!-- Project 3 -->
+    <div class="col-md-12 mb-4" data-aos="fade-up">
+      <div class="card h-100 p-4">
+        <h5 class="card-title">Disease Prediction using Machine Learning</h5>
+        <p><strong>Project Highlights:</strong></p>
+        <ul>
+          <li>Exploratory Data Analysis (EDA)</li>
+          <li>Model Implementation</li>
+          <li>Web Application Development</li>
+        </ul>
+        <p>
+          Successfully created a predictive tool that enhances disease diagnostics, proving the effectiveness of machine learning in improving health outcomes.
+        </p>
+        <a href="https://github.com/Ratnatepy/Disease-Prediction" target="_blank" class="btn btn-primary">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+    <!-- Project 4 -->
+    <div class="col-md-12 mb-4" data-aos="fade-up">
+      <div class="card h-100 p-4">
+        <h5 class="card-title">Driver Drowsiness Detection</h5>
+        <p><strong>Technologies:</strong> Python, TensorFlow, OpenCV, Hadoop, Arduino</p>
+        <ul>
+          <li>Built a computer vision pipeline trained on large eye closure and yawning image datasets, utilizing HDFS to scale experiments.</li>
+          <li>Evaluated multiple deep learning and traditional models; top CNN model delivered significantly higher accuracy than classical baselines.</li>
+        </ul>
+        <p>
+          Outcome: Integrated real-time inference with an Arduino-based buzzer, providing low latency alerts to improve driver safety.
+        </p>
+        <a href="https://github.com/Ratnatepy/Driver-Drowsiness-Detection" target="_blank" class="btn btn-primary">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+    <!-- Project 5 -->
+    <div class="col-md-12 mb-4" data-aos="fade-up">
+      <div class="card h-100 p-4">
+        <h5 class="card-title">Traffic Sign Detection and Recognition Project</h5>
+        <p><strong>Project Highlights:</strong></p>
+        <ul>
+          <li>Real-time traffic sign detection using YOLOv8 deep learning framework.</li>
+          <li>Custom convolutional neural network (CNN) model developed in Keras for traffic sign classification.</li>
+          <li>Integration of detection and classification pipeline to analyze images and videos.</li>
+          <li>Visualization of detected signs with bounding boxes and labels for easy interpretation.</li>
+        </ul>
+        <p><strong>Technologies:</strong> Python, TensorFlow, Keras, PyTorch, Ultralytics YOLOv8, OpenCV</p>
+        <p>
+          Outcome: Successfully implemented an end-to-end traffic sign recognition system capable of accurately detecting and classifying various traffic signs, enhancing autonomous driving and driver assistance systems.
+        </p>
+        <a href="https://github.com/Ratnatepy/Traffic-Object-Dection" target="_blank" class="btn btn-primary">
+          <i class="bi bi-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Achievements Timeline -->
+<section id="achievements" class="container py-5">
+  <h2 class="section-title">Achievements & Voluntary Involvement</h2>
+  <div class="timeline">
+    <div class="timeline-item" data-aos="fade-left">
+      <h5>24 July 2024 to 30 September 2024</h5>
+      <p>Obtained <strong>Certificate of Internship</strong> from the Ministry of Post and Telecommunications.</p>
+    </div>
+    <div class="timeline-item" data-aos="fade-left">
+      <h5>11 August 2023</h5>
+      <p>Received <strong>Certificate of Completion (Standard Level 2023)</strong> at UNESCO UNITWIN Handong Global University Data Science Camp.</p>
+    </div>
+    <div class="timeline-item" data-aos="fade-left">
+      <h5>2 May 2022</h5>
+      <p>Volunteered in <strong>Online Korean Camp Season 13th</strong> (Artwork Team, International Youth Fellowship).</p>
+    </div>
+    <div class="timeline-item" data-aos="fade-left">
+      <h5>23 December 2021</h5>
+      <p>Organizing committee, <strong>JCI Cambodia WE Act projects</strong>:<br>
+        <span style="margin-left:1.2em">- JCI Skill Dev. Trainings (Aug, Project Officer)</span><br>
+        <span style="margin-left:1.2em">- JCI Role Models &amp; Career Forum (Nov, Chairperson &amp; MC)</span>
+      </p>
+    </div>
+    <div class="timeline-item" data-aos="fade-left">
+      <h5>10 December 2021</h5>
+      <p>Completed <strong>The First Aspiration Competition</strong> hosted by Ministry of Education, Youth, and Sport.</p>
+    </div>
+    <div class="timeline-item" data-aos="fade-left">
+      <h5>25 March 2020</h5>
+      <p>Volunteered at <strong>Education USA Fair</strong> (General Volunteer, US Embassy Phnom Penh).</p>
+    </div>
+    <div class="timeline-item" data-aos="fade-left">
+      <h5>5 March 2020</h5>
+      <p>Media Team, <strong>8th National Debate Championship</strong> (SpringBoard4Education, Cambodia).</p>
+    </div>
+  </div>
+</section>
+
+<!-- Certificates Collection -->
+<section id="certificates" class="container py-5">
+  <h2 class="section-title">Certificates Collection</h2>
+  <p class="text-center mb-4" style="max-width: 600px; margin: 0 auto; color: #466f85;">
+    View my complete collection of certificates showcasing my dedication and learning journey.
+  </p>
+  <div class="text-center">
+    <a href="Collection of certificate.pdf" target="_blank" class="btn btn-outline-primary btn-lg" rel="noopener noreferrer">
+      <i class="bi bi-file-earmark-pdf-fill" style="margin-right: 8px;"></i>
+      View Certificates Collection (PDF)
+    </a>
+  </div>
+</section>
+
+
+
+<!-- Contact -->
+<section id="contact" class="container py-5">
+  <h2 class="section-title text-center">Contact Me</h2>
+  <div class="text-center" data-aos="fade-up">
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:bunratnatepy@gmail.com" style="font-size:1.09em;">bunratnatepy@gmail.com</a>
+    </p>
+    <p>
+      <a href="https://github.com/Ratnatepy" target="_blank" style="display:inline-block; color:#222; margin-left:6px; font-size:1.28rem; vertical-align:middle;">
+        <i class="bi bi-github" style="font-size:1.28rem; vertical-align:middle; margin-right:4px;"></i>
+        github.com/Ratnatepy
+      </a>
+    </p>
+    <p>
+      <a href="https://www.linkedin.com/in/bun-ratnatepy-5859342b6/" target="_blank" style="display:inline-block; color:#007bbf; margin-left:6px; font-size:1.28rem; vertical-align:middle;">
+        <i class="bi bi-linkedin" style="font-size:1.28rem; vertical-align:middle; margin-right:4px;"></i>
+        linkedin.com/in/bun-ratnatepy
+    </a>
+    <div class="text-center mt-3">
+      <img src="https://visitor-badge.laobi.icu/badge?page_id=Ratnatepy.portfolio" alt="visitor badge"/>
+    </div>
+  </div>
+</section>
+<a href="#contact" class="d-lg-none btn btn-primary rounded-circle shadow-lg sticky-contact">
+  <i class="bi bi-envelope-fill"></i>
+</a>
+<footer class="text-center py-4" style="background:#f6fbfe; color:#8bb1bb;">
+  <p style="margin:0;">© 2025 Bun Ratnatepy. All Rights Reserved.</p>
+</footer>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  // Typed.js animation
+  const typed = new Typed('.typed', {
+    strings: document.querySelector('.typed').getAttribute('data-typed-items').split(','),
+    typeSpeed: 70,
+    backSpeed: 40,
+    backDelay: 2000,
+    loop: true
+  });
+  // Navbar color on scroll
+  window.addEventListener('scroll', function () {
+    const nav = document.getElementById('mainNav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+  // Scrollspy for navbar
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('#navbarNav .nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      const sectionHeight = section.clientHeight;
+      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+  document.querySelector('.navbar-toggler').addEventListener('click', function () {
+    this.classList.toggle('collapsed');
+  });
+</script>
+</body>
+</html>
